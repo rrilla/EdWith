@@ -1,0 +1,146 @@
+Q1>
+주문이 들어왔을 때 특정 물품의 재고량을 하나 줄이고 매출액을 더하는 일을 하게 됩니다.
+기존에 수박의 재고량은 5개였습니다.
+이번에 들어온 주문은 수박 3건이며, 해당 물품의 가격은 10000원 입니다.
+재고량을 차감해주고 매출액을 구하는 프로그램을 만들어 주세요.
+
+ 또 매출액에서 부가세를 구해주세요. 부가세는 물품가격의 10% 입니다.
+매출액은 물품의 가격과 부가세를 합산한 가격으로 구합니다.
+
+ 재고량과 매출액을 구하고 다음의 문구를 출력하도록 프로그램을 구현합니다.
+(수업 내용을 바탕으로 C언어로 구현하며, 변수명은 자유롭게 지정합니다.)
+
+ 주문건수 : 0 건
+
+기존 재고량 : 0개
+
+남은 재고량 : 0개
+
+매출액(부가세포함) : 000원
+
+
+A1>
+#include <stdio.h>
+#include <cs50.h>
+
+void current(int stock,int price)
+{
+    int order=0;
+    
+    printf("현재 재고량은 '%d'개 입니다.\n", stock);
+    order = get_int("주문하실 개수를 적어주세요 : ");
+    while(order>stock){
+     printf("****재고량보다 작게 입력해주세요.****\n");
+     order = get_int("주문하실 개수를 적어주세요 : ");
+    }
+    ordercount++;
+    printf("****현재 주문 상태****\n");
+    printf("주문건수 : %d 건\n", ordercount);
+    printf("기존 재고량 : %d 개\n", stock);
+    printf("남은 재고량 : %d 개\n", stock - order);
+    printf("매출액(부가세 포함) : %.1f원\n", price*order+price*order*0.1);
+}
+
+int main(void)
+{
+    current(5,10000);	//current(재고량,개당가격 입력);
+	
+}
+
+
+
+Q2>
+여러분은 인터넷 은행의 인턴으로 취업을 했습니다.
+1년 동안 저축을 했을 때 이율을 원금의 1.2%로 주는 예금이 있다고 합니다.
+고객이 목표금액을 입력하면 1년 만기시 받는 원금과 이자의 합계를 출력해 주는 코드를 작성해 달라는 팀장님의 지시를 받았습니다.
+예금액에 따라 만기시 받게 되는 금액을 구하는 코드를 작성해 주세요.
+
+
+A2>
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    string day = get_string("요일을 입력하세요");
+    if(day==("월요일")){
+        printf("%s: 청국장", day);
+    }else if(day==("화요일")){
+        printf("%s: 비빔밥", day);
+    }else if((day==("수요일")){
+        printf("%s: 된장찌개", day);
+    }else if((day==("목요일")){
+        printf("%s: 칼국수", day);
+    }else if((day==("금요일")){
+        printf("%s: 냉면", day);
+    }else if((day==("토요일")){
+        printf("%s: 소불고기", day);
+    }else { 
+        printf("%s: 오삼불고기", day);
+    }   
+}
+
+Q3>
+모바일 프로그래밍을 배우고 프로그래머로 취업을 하려고 하고있습니다.
+신장개업을 하는 식당의 어플리케이션을 개발해 달라는 업무가 들어왔습니다.
+이 식당은 손님들의 편의를 위해 모바일앱을 통한 쿠폰이나 서비스를 제공하고자 합니다.
+프로모션을 위해 오늘의 메뉴를 할인해서 판매하고 있습니다.
+의뢰자는 음식점의 앱에 들어와서 요일을 입력하면 해당 요일의 메뉴를 출력해 달라고 요청을 했습니다.
+요일을 입력했을 때 해당 요일의 메뉴를 출력해 주는 프로그램을 개발 해서 고객의 요구사항을 잘 구현해 주세요!
+각 요일별 메뉴는 다음과 같습니다.
+
+월요일 : 청국장
+화요일 : 비빔밥
+수요일 : 된장찌개
+목요일 : 칼국수
+금요일 : 냉면
+토요일 : 소불고기
+일요일 : 오삼불고기
+
+출력 예시)
+요일을 입력하세요: 화요일                                                                                               
+화요일: 비빔밥
+
+
+
+A3>
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string day = get_string("요일을 입력하세요: ");
+    if (!strcmp(day, "월요일"))
+    {
+        printf("%s: 청국장\n", day);
+    }
+    else if (!strcmp(day, "화요일"))
+    {
+        printf("%s: 비빔밥\n", day);
+    }
+    else if (!strcmp(day, "수요일"))
+    {
+        printf("%s: 된장찌개\n", day);
+    }
+    else if (!strcmp(day, "목요일"))
+    {
+        printf("%s: 칼국수\n", day);
+    }    
+    else if (!strcmp(day, "금요일"))
+    {
+       printf("%s: 냉면\n", day);
+    }
+    else if (!strcmp(day, "토요일"))
+    {
+        printf("%s: 소불고기\n", day);
+    }
+    else if (!strcmp(day, "일요일"))
+    {
+        printf("%s: 오삼불고기\n", day);
+    }
+    else
+    {
+        printf("잘못 입력하였습니다\n");
+    }
+}
